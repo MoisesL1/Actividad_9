@@ -30,6 +30,8 @@ do
                 if (productos.ContainsKey(id) == true)
                 {
                     existe = true;
+                    Console.WriteLine("Este ID ya existe. Presione una tecla para continuar. ");
+                    Console.ReadKey();
                 }
 
                 else
@@ -69,9 +71,28 @@ do
             break;
 
         case 4:
+            Console.WriteLine("ID a eliminar: ");
+            id = int.Parse(Console.ReadLine());
+            productos.Remove(id);
+
+            Console.ReadKey();
             break;
 
         case 5:
+            if(productos.Count <= 0)
+            {
+                Console.WriteLine("No hay datos dentro del diccionario. ");
+            }
+
+            else
+            {
+                foreach (var item in productos)
+                {
+                    Console.WriteLine($"ID: {item.Key}, Nombre: {item.Value.Nombre}, Precio: {item.Value.precio}, Cantidad: {item.Value.cantidad}, Categoría: {item.Value.categoria}. ");
+                }
+            }
+
+            Console.ReadKey();
             break;
 
         default:
