@@ -4,6 +4,7 @@ int op;
 
 do
 {
+    Console.Clear();
     Console.WriteLine("1. Salir. ");
     Console.WriteLine("2. Agregar. ");
     Console.WriteLine("3. Modificar. ");
@@ -15,12 +16,56 @@ do
     switch(op)
     {
         case 1:
+            Console.WriteLine("Saliendo del programa. ");
             break;
 
         case 2:
+            bool existe;
+            int id;
+            do
+            {
+                Console.WriteLine("ID: ");
+                id = int.Parse(Console.ReadLine());
+
+                if (productos.ContainsKey(id) == true)
+                {
+                    existe = true;
+                }
+
+                else
+                {
+                    existe = false;
+                }
+            }
+            while(!existe);
+            Console.WriteLine("Nombre del producto: ");
+            string nombre = Console.ReadLine();
+            Console.WriteLine("Precio: ");
+            double precio = double.Parse(Console.ReadLine());
+            Console.WriteLine("Cantidad disponible: ");
+            int cant = int.Parse(Console.ReadLine());
+            Console.WriteLine("Categoría: ");
+            string categoria = Console.ReadLine();
+
+            productos.Add(id,(nombre, precio, cant, categoria));
+            Console.ReadKey();
             break;
 
         case 3:
+            Console.WriteLine("Ingrese el ID del producto a modificar: ");
+            id = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Nuevo nombre: ");
+            nombre = Console.ReadLine();
+            Console.WriteLine("Nuevo precio: ");
+            precio = double.Parse(Console.ReadLine());
+            Console.WriteLine("Nueva cantidad disponible: ");
+            cant = int.Parse(Console.ReadLine());
+            Console.WriteLine("Nueva categorría: ");
+            categoria = Console.ReadLine();
+
+            productos[id] = (nombre, precio, cant, categoria);
+            Console.ReadKey();
             break;
 
         case 4:
@@ -30,7 +75,8 @@ do
             break;
 
         default:
-
+            Console.WriteLine("Ingreso una opción invalida. Presione cualquier tecla para continuar. ");
+            Console.ReadKey();
             break;
     }
 }
