@@ -30,7 +30,7 @@ do
             break;
 
         default:
-            Console.WriteLine("");
+
             break;
     }
 }
